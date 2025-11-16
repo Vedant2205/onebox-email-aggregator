@@ -1,0 +1,200 @@
+{
+  "info": {
+    "name": "Onebox Email Aggregator API",
+    "description": "API collection for Onebox Email Aggregator",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "IMAP",
+      "item": [
+        {
+          "name": "Reconnect IMAP Accounts",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/imaps/reconnect",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "imaps", "reconnect"]
+            }
+          }
+        },
+        {
+          "name": "Get IMAP Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/imaps/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "imaps", "status"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Emails",
+      "item": [
+        {
+          "name": "Search Emails",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/emails?q=test&account=acct1&folder=INBOX&page=1&size=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "test",
+                  "description": "Search query"
+                },
+                {
+                  "key": "account",
+                  "value": "acct1",
+                  "description": "Filter by account ID"
+                },
+                {
+                  "key": "folder",
+                  "value": "INBOX",
+                  "description": "Filter by folder"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Email by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "email-id-here"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Classify Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/emails/:id/classify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "emails", ":id", "classify"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "email-id-here"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RAG",
+      "item": [
+        {
+          "name": "Suggest Reply",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailId\": \"email-id-here\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/rag/suggest-reply",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rag", "suggest-reply"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test",
+      "item": [
+        {
+          "name": "Test Slack",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/test/slack",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "slack"]
+            }
+          }
+        },
+        {
+          "name": "Test Webhook",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/test/webhook",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "test", "webhook"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
